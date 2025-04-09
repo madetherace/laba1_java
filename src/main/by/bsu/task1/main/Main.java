@@ -1,5 +1,6 @@
 package bsu.task1.main;
 
+import bsu.task1.creator.PhoneSubscriberFactory;
 import bsu.task1.entity.PhoneSubscriber;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,43 +12,30 @@ public class Main {
 
     public static void main(String[] args) {
         PhoneSubscriberService service = new PhoneSubscriberServiceImpl();
+        PhoneSubscriberFactory factory = new PhoneSubscriberFactory() {
 
-        // Add some test subscribers
-        service.addSubscriber(createSubscriber(1, "Smith", "John", "A.", "123 Main St",
+        };
+
+
+
+        service.addSubscriber(factory.createSubscriber(1, "Smith", "John", "A.", "123 Main St",
                 "1234567890123456", 100.0, 0.0, 120, 0));
-        service.addSubscriber(createSubscriber(2, "Johnson", "Alice", "B.", "456 Oak Ave",
+        service.addSubscriber(factory.createSubscriber(2, "Johnson", "Alice", "B.", "456 Oak Ave",
                 "2345678901234567", 50.0, 10.0, 60, 30));
-        service.addSubscriber(createSubscriber(3, "Williams", "Bob", "C.", "789 Pine Rd",
+        service.addSubscriber(factory.createSubscriber(3, "Williams", "Bob", "C.", "789 Pine Rd",
                 "3456789012345678", 75.0, 5.0, 90, 0));
 
-        // Test the service methods
         logger.info("\nSubscribers with local calls > 80 minutes:");
         service.findSubscribersWithExcessiveLocalCalls(80).forEach(subscriber ->
-                logger.info(subscriber.toString())); // toString() is inherited from Object
+                logger.info(subscriber.toString()));
 
         logger.info("\nSubscribers with international calls:");
         service.findSubscribersWithInternationalCalls().forEach(subscriber ->
-                logger.info(subscriber.toString())); // toString() is inherited from Object
+                logger.info(subscriber.toString()));
 
         logger.info("\nSubscribers in alphabetical order:");
         service.findSubscribersInAlphabeticalOrder().forEach(subscriber ->
-                logger.info(subscriber.toString())); // toString() is inherited from Object
+                logger.info(subscriber.toString()));
     }
 
-    private static PhoneSubscriber createSubscriber(int id, String lastName, String firstName,
-                                                    String middleName, String address, String creditCardNumber, double debit,
-                                                    double credit, int localCallMinutes, int internationalCallMinutes) {
-        PhoneSubscriber subscriber = new PhoneSubscriber();
-        subscriber.setId(id);
-        subscriber.setLastName(lastName);
-        subscriber.setFirstName(firstName);
-        subscriber.setMiddleName(middleName);
-        subscriber.setAddress(address);
-        subscriber.setCreditCardNumber(creditCardNumber);
-        subscriber.setDebit(debit);
-        subscriber.setCredit(credit);
-        subscriber.setLocalCallMinutes(localCallMinutes);
-        subscriber.setInternationalCallMinutes(internationalCallMinutes);
-        return subscriber;
-    }
 }
