@@ -1,12 +1,12 @@
-package service;
+package bsu.task1.service;
 
-import entity.PhoneSubscriber;
+import bsu.task1.entity.PhoneSubscriber;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import service.impl.PhoneSubscriberServiceImpl;
+import bsu.task1.service.impl.PhoneSubscriberServiceImpl;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class PhoneSubscriberServiceTest {
     @Test
     public void testGetSubscribersWithExcessiveLocalCalls() {
         logger.info("Running testGetSubscribersWithExcessiveLocalCalls...");
-        List<PhoneSubscriber> result = service.getSubscribersWithExcessiveLocalCalls(80);
+        List<PhoneSubscriber> result = service.findSubscribersWithExcessiveLocalCalls(80);
 
         logger.debug("Verifying results for excessive local calls...");
         softAssert.assertEquals(result.size(), 2,
@@ -56,7 +56,7 @@ public class PhoneSubscriberServiceTest {
     @Test
     public void testGetSubscribersWithInternationalCalls() {
         logger.info("Running testGetSubscribersWithInternationalCalls...");
-        List<PhoneSubscriber> result = service.getSubscribersWithInternationalCalls();
+        List<PhoneSubscriber> result = service.findSubscribersWithInternationalCalls();
 
         logger.debug("Verifying results for international calls...");
         softAssert.assertEquals(result.size(), 1,
@@ -77,7 +77,7 @@ public class PhoneSubscriberServiceTest {
     @Test
     public void testGetSubscribersInAlphabeticalOrder() {
         logger.info("Running testGetSubscribersInAlphabeticalOrder...");
-        List<PhoneSubscriber> result = service.getSubscribersInAlphabeticalOrder();
+        List<PhoneSubscriber> result = service.findSubscribersInAlphabeticalOrder();
 
         logger.debug("Verifying alphabetical order...");
         softAssert.assertEquals(result.size(), 3,
@@ -107,19 +107,19 @@ public class PhoneSubscriberServiceTest {
         PhoneSubscriber newSubscriber = createSubscriber(4, "Brown", "David", "D.",
                 "101 Elm St", "4567890123456789", 200.0, 0.0, 30, 5);
 
-        int initialSize = service.getSubscribersInAlphabeticalOrder().size();
+        int initialSize = service.findSubscribersInAlphabeticalOrder().size();
         logger.debug("Initial subscriber count: {}", initialSize);
 
         service.addSubscriber(newSubscriber);
         logger.debug("Added new subscriber: {}", newSubscriber);
 
-        int newSize = service.getSubscribersInAlphabeticalOrder().size();
+        int newSize = service.findSubscribersInAlphabeticalOrder().size();
         logger.debug("New subscriber count: {}", newSize);
 
         softAssert.assertEquals(newSize, initialSize + 1,
                 "Subscriber list size should increase by 1");
 
-        List<PhoneSubscriber> subscribers = service.getSubscribersInAlphabeticalOrder();
+        List<PhoneSubscriber> subscribers = service.findSubscribersInAlphabeticalOrder();
         softAssert.assertTrue(subscribers.contains(newSubscriber),
                 "New subscriber should be in the list");
 

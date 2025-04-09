@@ -1,10 +1,10 @@
-package main;
+package bsu.task1.main;
 
-import entity.PhoneSubscriber;
+import bsu.task1.entity.PhoneSubscriber;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import service.PhoneSubscriberService;
-import service.impl.PhoneSubscriberServiceImpl;
+import bsu.task1.service.PhoneSubscriberService;
+import bsu.task1.service.impl.PhoneSubscriberServiceImpl;
 
 public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
@@ -21,17 +21,17 @@ public class Main {
                 "3456789012345678", 75.0, 5.0, 90, 0));
 
         // Test the service methods
-        logger.info("Subscribers with local calls > 80 minutes:");
-        service.getSubscribersWithExcessiveLocalCalls(80).forEach(subscriber ->
-                logger.info(subscriber.toString()));
+        logger.info("\nSubscribers with local calls > 80 minutes:");
+        service.findSubscribersWithExcessiveLocalCalls(80).forEach(subscriber ->
+                logger.info(subscriber.toString())); // toString() is inherited from Object
 
         logger.info("\nSubscribers with international calls:");
-        service.getSubscribersWithInternationalCalls().forEach(subscriber ->
-                logger.info(subscriber.toString()));
+        service.findSubscribersWithInternationalCalls().forEach(subscriber ->
+                logger.info(subscriber.toString())); // toString() is inherited from Object
 
         logger.info("\nSubscribers in alphabetical order:");
-        service.getSubscribersInAlphabeticalOrder().forEach(subscriber ->
-                logger.info(subscriber.toString()));
+        service.findSubscribersInAlphabeticalOrder().forEach(subscriber ->
+                logger.info(subscriber.toString())); // toString() is inherited from Object
     }
 
     private static PhoneSubscriber createSubscriber(int id, String lastName, String firstName,

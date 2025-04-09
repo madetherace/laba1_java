@@ -1,6 +1,6 @@
-package validator;
+package bsu.task1.validator;
 
-import entity.PhoneSubscriber;
+import bsu.task1.entity.PhoneSubscriber;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

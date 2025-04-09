@@ -1,6 +1,6 @@
-package creator;
+package bsu.task1.creator;
 
-import entity.PhoneSubscriber;
+import bsu.task1.entity.PhoneSubscriber;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import static org.testng.Assert.assertNull;

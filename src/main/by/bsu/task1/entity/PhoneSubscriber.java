@@ -1,4 +1,6 @@
-package entity;
+package bsu.task1.entity;
+
+import java.util.StringJoiner;
 
 public class PhoneSubscriber {
     private int id;
@@ -97,17 +99,17 @@ public class PhoneSubscriber {
 
     @Override
     public String toString() {
-        return "PhoneSubscriber{" +
-                "id=" + id +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", address='" + address + '\'' +
-                ", creditCardNumber='" + creditCardNumber + '\'' +
-                ", debit=" + debit +
-                ", credit=" + credit +
-                ", localCallMinutes=" + localCallMinutes +
-                ", internationalCallMinutes=" + internationalCallMinutes +
-                '}';
+        StringJoiner joiner = new StringJoiner(", ", "PhoneSubscriber{", "}");
+        joiner.add("id=" + id);
+        joiner.add("lastName='" + lastName + "'");
+        joiner.add("firstName='" + firstName + "'");
+        joiner.add("middleName='" + middleName + "'");
+        joiner.add("address='" + address + "'");
+        joiner.add("creditCardNumber='" + creditCardNumber + "'");
+        joiner.add("debit=" + debit);
+        joiner.add("credit=" + credit);
+        joiner.add("localCallMinutes=" + localCallMinutes);
+        joiner.add("internationalCallMinutes=" + internationalCallMinutes);
+        return joiner.toString();
     }
 }
