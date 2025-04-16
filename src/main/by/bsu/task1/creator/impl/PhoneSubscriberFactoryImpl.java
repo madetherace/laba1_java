@@ -1,10 +1,10 @@
-package bsu.task1.creator;
+package bsu.task1.creator.impl;
 
-import bsu.task1.creator.impl.PhoneSubscriberCreatorImpl;
+import bsu.task1.creator.PhoneSubscriberCreator;
 import bsu.task1.entity.PhoneSubscriber;
 import bsu.task1.validator.PhoneSubscriberValidator;
 
-public abstract class PhoneSubscriberFactory implements PhoneSubscriberCreatorImpl {
+public abstract class PhoneSubscriberFactoryImpl implements PhoneSubscriberCreator {
     protected PhoneSubscriberValidator validator = new PhoneSubscriberValidator();
 
     @Override

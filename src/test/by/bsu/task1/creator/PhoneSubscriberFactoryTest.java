@@ -1,5 +1,6 @@
 package bsu.task1.creator;
 
+import bsu.task1.creator.impl.PhoneSubscriberFactoryImpl;
 import bsu.task1.entity.PhoneSubscriber;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -7,7 +8,7 @@ import static org.testng.Assert.assertNull;
 
 public class PhoneSubscriberFactoryTest {
 
-    private static class TestPhoneSubscriberFactory extends PhoneSubscriberFactory {
+    private static class TestPhoneSubscriberFactory extends PhoneSubscriberFactoryImpl {
         @Override
         public PhoneSubscriber createSubscriber(int id, String lastName, String firstName, String middleName,
                                                 String address, String creditCardNumber, double debit,
@@ -31,7 +32,7 @@ public class PhoneSubscriberFactoryTest {
         }
     }
 
-    private final PhoneSubscriberFactory factory = new TestPhoneSubscriberFactory();
+    private final PhoneSubscriberFactoryImpl factory = new TestPhoneSubscriberFactory();
     private final SoftAssert softAssert = new SoftAssert();
 
 

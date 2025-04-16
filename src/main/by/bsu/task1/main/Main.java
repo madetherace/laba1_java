@@ -1,7 +1,6 @@
 package bsu.task1.main;
 
-import bsu.task1.creator.PhoneSubscriberFactory;
-import bsu.task1.entity.PhoneSubscriber;
+import bsu.task1.creator.impl.PhoneSubscriberFactoryImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import bsu.task1.service.PhoneSubscriberService;
@@ -12,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         PhoneSubscriberService service = new PhoneSubscriberServiceImpl();
-        PhoneSubscriberFactory factory = new PhoneSubscriberFactory() {
+        PhoneSubscriberFactoryImpl factory = new PhoneSubscriberFactoryImpl() {
 
         };
 
